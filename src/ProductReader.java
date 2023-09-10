@@ -29,6 +29,7 @@ public class ProductReader
         boolean start = true;
         Product item;
 
+
         //prompt for use to select file
         start = SafeInput.getYNConfirm(con, "Would you like to select a file?");
 

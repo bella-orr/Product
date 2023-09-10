@@ -29,7 +29,8 @@ public class SafeInput
        }while(retString.length() == 0); // until we have some characters
        
        return retString;
-       
+
+
    }
     /**
      * Get an int value within a specified numeric range
