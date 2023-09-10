@@ -45,8 +45,6 @@ public class ProductReader
 
                     InputStream in = new BufferedInputStream(Files.newInputStream(file, CREATE));
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    System.out.println(String.format("%-8s%-10s%-12s%7s", "ID#", "Name", "Description", "Cost"));
-                    System.out.println("==================================================");
 
                     while (reader.ready())
                     {
@@ -71,12 +69,12 @@ public class ProductReader
                     }
 
                     System.out.println();
-                    System.out.println(String.format("%-8s%-10s%-12s%6s", "ID#", "Firstname", "Lastname", "Title", "YOB"));
-                    System.out.println("==================================================");
+                    System.out.println(String.format("%-8s%-15s%-28s%11s", "ID#", "Name", "Description", "Cost"));
+                    System.out.println("================================================================");
 
                     for(Product p: list)
                     {
-                        System.out.println(String.format("%-8s%-10s%-12s%7s",p.getID(), p.getName(), p.getDescription(), p.getCost() ));
+                        System.out.println(String.format("%-8s%-15s%-28s%12s",p.getID(), p.getName(), p.getDescription(), p.getCost() ));
 
                     }
 

@@ -13,8 +13,8 @@ public class ProductGenerator
     {
         //Declarations
         File workingDirectory = new File(System.getProperty("user.dir"));
-        Path file = Paths.get(workingDirectory.getPath() + "\\src\\ProductTestData.txt");
-        ArrayList<String> products = new ArrayList<>();
+        Path file = Paths.get(workingDirectory.getPath() + "\\src\\ProductTestData.csv");
+        ArrayList<Product> products = new ArrayList<>();
         boolean done = false;
         Scanner in = new Scanner(System.in);
 
@@ -22,6 +22,8 @@ public class ProductGenerator
         String name ="";
         String description = "";
         String record = "";
+        String csvRec = "";
+        Product item;
         double cost = 0;
 
 
@@ -33,23 +35,27 @@ public class ProductGenerator
             description = SafeInput.getNonZeroLenString(in, "Please enter the description" );
 
 
-            //Goes to SafeInput and checks to make sure birth year is 4 digits long
+            //Goes to SafeInput and check for a double
             cost = SafeInput.getDouble(in, "Please enter the cost");
 
-            //formats information user input
-            record = ID + ", " + name + ", " + description + ", " + cost;
+            //creates input to product
+            item = new Product(ID, name, description, cost);
 
-            //records in array list
-            products.add(record);
+            //sets name of the poduct
+            item.setName(name);
 
+            //records the product object to an array list products
+            products.add(item);
+
+            //ask user for my information using getYN method
             done = SafeInput.getYNConfirm(in, "Are you done entering information?");
 
         }
         while(!done);
 
-        for(String p: products)
+        for(Product i: products)
         {
-            System.out.println(p);
+            System.out.println(i);
         }
 
         try
@@ -59,10 +65,13 @@ public class ProductGenerator
             BufferedWriter writer =
                     new BufferedWriter(new OutputStreamWriter(out));
 
-            for(String rec : products) //enhanced for loop
+            for(Product rec : products) //enhanced for loop
             {
-                writer.write(rec, 0, rec.length());
-                writer.newLine();  // adds the new line
+                csvRec = rec.toCSVDataRecord();//changes product object toCSVData
+                writer.write(csvRec, 0, csvRec.length());
+                writer.newLine();// adds the new line
+
+                System.out.println(csvRec);
 
             }
             writer.close();
