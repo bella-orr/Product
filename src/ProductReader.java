@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.io.FileNotFoundException;
 import static java.nio.file.StandardOpenOption.CREATE;
 import javax.swing.JFileChooser;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -24,7 +25,9 @@ public class ProductReader
         File selectedFile;
         String rec = "";
         Scanner con = new Scanner(System.in);
+        ArrayList<Product> list = new ArrayList<>();
         boolean start = true;
+        Product item;
 
         start = SafeInput.getYNConfirm(con, "Would you like to select a file?");
 
@@ -48,7 +51,33 @@ public class ProductReader
                     while (reader.ready())
                     {
                         rec = reader.readLine();
-                        System.out.println(rec);
+                        String [] details = rec.split(", ");
+
+                        String ID = details[0];
+                        String name = details[1];
+                        String description = details[2];
+                        String strCost = details[3];
+
+                        double cost = Double.parseDouble(strCost);
+
+                        item = new Product(ID, name, description, cost);
+
+                        item.setName(name);
+
+                        list.add(item);
+
+                        System.out.println(item);
+
+                    }
+
+                    System.out.println();
+                    System.out.println(String.format("%-8s%-10s%-12s%6s", "ID#", "Firstname", "Lastname", "Title", "YOB"));
+                    System.out.println("==================================================");
+
+                    for(Product p: list)
+                    {
+                        System.out.println(String.format("%-8s%-10s%-12s%7s",p.getID(), p.getName(), p.getDescription(), p.getCost() ));
+
                     }
 
 

@@ -3,15 +3,23 @@ public class Product
     private String ID = "";
     private String name = "";
     private String description = "";
-    private String record = "";
     private double cost = 0;
 
-    public Product(String ID, String name, String description, String record, double cost) {
+    public Product(String ID, String name, String description, double cost) {
         this.ID = ID;
         this.name = name;
         this.description = description;
-        this.record = record;
         this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", cost=" + cost +
+                '}';
     }
 
     public String getID() {
@@ -38,13 +46,6 @@ public class Product
         this.description = description;
     }
 
-    public String getRecord() {
-        return record;
-    }
-
-    public void setRecord(String record) {
-        this.record = record;
-    }
 
     public double getCost() {
         return cost;
@@ -52,5 +53,10 @@ public class Product
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public String toCSVDataRecord()
+    {
+        return this.ID + ", " + this.name + ", " + this.description + ", " + this.cost;
     }
 }
