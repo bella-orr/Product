@@ -29,7 +29,7 @@ public class ProductGenerator
 
         do
         {
-            //Goes to SafeInput and checks for non-zero length string
+            //Goes to SafeInput and checks for non-zero length
             ID = SafeInput.getNonZeroLenString(in, "Please enter the ID (6 digits)" );
             name = SafeInput.getNonZeroLenString(in, "Please enter the name" );
             description = SafeInput.getNonZeroLenString(in, "Please enter the description" );

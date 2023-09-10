@@ -5,7 +5,8 @@ public class Product
     private String description = "";
     private double cost = 0;
 
-    public Product(String ID, String name, String description, double cost) {
+    public Product(String ID, String name, String description, double cost)
+    {
         this.ID = ID;
         this.name = name;
         this.description = description;

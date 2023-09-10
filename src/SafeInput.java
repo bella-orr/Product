@@ -16,7 +16,7 @@ public class SafeInput
    /**
     * Get a String which contains at least one character
     * @param pipe a Scanner opened to read from System.in
-    * @param prompt prompt for the user
+    * @param prompt  prompt for the user
     * @return a String response that is not zero length
     */ 
    public static String getNonZeroLenString(Scanner pipe, String prompt)

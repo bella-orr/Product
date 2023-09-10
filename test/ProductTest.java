@@ -7,6 +7,7 @@ class ProductTest {
 
     Product example;
 
+
     @BeforeEach
     void setUp()
     {
