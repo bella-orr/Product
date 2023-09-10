@@ -30,7 +30,6 @@ public class SafeInput
        
        return retString;
 
-
    }
     /**
      * Get an int value within a specified numeric range
